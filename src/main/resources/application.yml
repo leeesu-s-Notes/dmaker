@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: 'true'
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show_sql: 'true'
+        format_sql: 'true'
+    generate-ddl: 'true'
+  h2:
+    console:
+      enabled: 'true'
+      settings:
+        web-allow-others: 'true'
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;
+    password: ''
