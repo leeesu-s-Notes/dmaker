@@ -34,7 +34,6 @@ public class CreateDeveloper {
         @Size(min= 3, max = 20, message = "name size must 3~20")
         private String name;
         private Integer age;
-        @NotNull
         private StatusCode statusCode;
     }
 
