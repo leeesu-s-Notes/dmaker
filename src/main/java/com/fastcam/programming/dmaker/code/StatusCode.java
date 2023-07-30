@@ -1,4 +1,4 @@
-package com.fastcam.programming.dmaker.entity;
+package com.fastcam.programming.dmaker.code;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

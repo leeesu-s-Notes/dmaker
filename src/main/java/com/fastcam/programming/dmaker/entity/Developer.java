@@ -1,5 +1,6 @@
 package com.fastcam.programming.dmaker.entity;
 
+import com.fastcam.programming.dmaker.code.StatusCode;
 import com.fastcam.programming.dmaker.dto.EditDeveloper;
 import com.fastcam.programming.dmaker.type.DeveloperLevel;
 import com.fastcam.programming.dmaker.type.DeveloperSkillType;
@@ -54,5 +55,4 @@ public class Developer {
         this.statusCode = StatusCode.RETIRED;
 
     }
-
 }

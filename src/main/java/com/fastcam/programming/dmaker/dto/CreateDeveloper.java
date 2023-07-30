@@ -1,10 +1,9 @@
 package com.fastcam.programming.dmaker.dto;
 
 import com.fastcam.programming.dmaker.entity.Developer;
-import com.fastcam.programming.dmaker.entity.StatusCode;
+import com.fastcam.programming.dmaker.code.StatusCode;
 import com.fastcam.programming.dmaker.type.DeveloperLevel;
 import com.fastcam.programming.dmaker.type.DeveloperSkillType;
-import com.fasterxml.jackson.annotation.JsonGetter;
 import lombok.*;
 
 import javax.validation.constraints.Max;
@@ -48,7 +47,7 @@ public class CreateDeveloper {
         private Integer experienceYear;
         private String memberId;
 
-        public static Response fromEntity(Developer developer) {
+        public static Response fromEntity(@NonNull Developer developer) {
             return Response.builder()
                     .developerLevel(developer.getDeveloperLevel())
                     .developerSkillType(developer.getDeveloperSkillType())
