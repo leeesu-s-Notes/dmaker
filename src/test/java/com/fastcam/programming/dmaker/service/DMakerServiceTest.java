@@ -118,7 +118,7 @@ class DMakerServiceTest {
                 () -> dMakerService.createDeveloper(
                         getCreateRequest(SENIOR, FRONT_END, 12))
         );
-        assertEquals(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED, dMakerException.getDMakerErrorCode());
+        assertEquals(DUPLICATED_MEMBER_ID, dMakerException.getDMakerErrorCode());
     }
     @Test
     void createDeveloperTest_fail_with_unmatched_level() {

@@ -24,7 +24,7 @@ public enum DeveloperLevel {
     private final Function<Integer, Boolean> validateFunction;
 
     public void validateExperienceYears(Integer years) {
-        if(validateFunction.apply(years))
+        if(!validateFunction.apply(years))
             throw new DMakerException(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
     }
 }
