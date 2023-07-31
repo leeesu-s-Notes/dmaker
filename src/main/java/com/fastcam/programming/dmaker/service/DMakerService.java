@@ -10,7 +10,6 @@ import com.fastcam.programming.dmaker.code.StatusCode;
 import com.fastcam.programming.dmaker.exception.DMakerException;
 import com.fastcam.programming.dmaker.repository.DeveloperRepository;
 import com.fastcam.programming.dmaker.repository.RetiredRepository;
-import com.fastcam.programming.dmaker.type.DeveloperLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -71,7 +70,8 @@ public class DMakerService {
     @Transactional
     public DeveloperDetailDto editDeveloper(
             String memberId, EditDeveloper.Request request) {
-        validateDeveloperLevel(request.getDeveloperLevel(), request.getExperienceYears());
+        request.getDeveloperLevel().validateExperienceYears(
+                request.getExperienceYears());
         // 회원이 없다면 NO_DEVELOPER
          Developer developer = getDeveloperByMemberId(memberId);
 
@@ -89,15 +89,6 @@ public class DMakerService {
           */
 
     }
-    /*
-    private Developer getUpdatedDeveloperFromRequest(EditDeveloper.Request request, Developer developer) {
-        developer.setDeveloperLevel(request.getDeveloperLevel());
-        developer.setDeveloperSkillType(request.getDeveloperSkillType());
-        developer.setExperienceYears(request.getExperienceYears());
-
-        return developer;
-    }
-    */
 
     @Transactional
     public DeveloperDetailDto deleteDeveloper(String memberId) {
@@ -119,29 +110,25 @@ public class DMakerService {
 
 
 
+
     private void validateCreateDeveloperRequest(@NonNull CreateDeveloper.Request request) {
-        // business validation
-        validateDeveloperLevel(request.getDeveloperLevel(),
-                request.getExperienceYears());
+        request.getDeveloperLevel().validateExperienceYears(
+                request.getExperienceYears()
+        );
 
         developerRepository.findByMemberId(request.getMemberId())
                 .ifPresent((developer -> {
                     throw new DMakerException(DUPLICATED_MEMBER_ID);
                 }));
-
     }
 
-    private void validateDeveloperLevel(DeveloperLevel developerLevel, int experienceYears) {
-        if(developerLevel == DeveloperLevel.SENIOR
-            && experienceYears < 10) {
-            throw new DMakerException(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
-        }
-        if(developerLevel == DeveloperLevel.JUNGNIOR
-                && (experienceYears < 4 || experienceYears > 10)) {
-            throw new DMakerException(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
-        }
-        if(developerLevel == DeveloperLevel.JUNIOR && experienceYears > 4) {
-            throw new DMakerException(LEVEL_EXPERIENCE_YEARS_NOT_MATCHED);
-        }
+        /*
+    private Developer getUpdatedDeveloperFromRequest(EditDeveloper.Request request, Developer developer) {
+        developer.setDeveloperLevel(request.getDeveloperLevel());
+        developer.setDeveloperSkillType(request.getDeveloperSkillType());
+        developer.setExperienceYears(request.getExperienceYears());
+
+        return developer;
     }
+    */
 }
