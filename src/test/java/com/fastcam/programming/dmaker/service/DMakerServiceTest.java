@@ -18,8 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static com.fastcam.programming.dmaker.contant.DMakerConstant.MAX_JUNIOR_EXPERIENCE_YEARS;
-import static com.fastcam.programming.dmaker.contant.DMakerConstant.MIN_SENIOR_EXPERIENCE_YEARS;
+import static com.fastcam.programming.dmaker.constant.DMakerConstant.MAX_JUNIOR_EXPERIENCE_YEARS;
+import static com.fastcam.programming.dmaker.constant.DMakerConstant.MIN_SENIOR_EXPERIENCE_YEARS;
 import static com.fastcam.programming.dmaker.exception.DMakerErrorCode.DUPLICATED_MEMBER_ID;
 import static com.fastcam.programming.dmaker.exception.DMakerErrorCode.LEVEL_EXPERIENCE_YEARS_NOT_MATCHED;
 import static com.fastcam.programming.dmaker.type.DeveloperLevel.*;

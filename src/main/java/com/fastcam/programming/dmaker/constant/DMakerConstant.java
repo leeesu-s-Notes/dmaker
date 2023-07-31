@@ -1,4 +1,4 @@
-package com.fastcam.programming.dmaker.contant;
+package com.fastcam.programming.dmaker.constant;
 
 public class DMakerConstant {
     public static final Integer MIN_SENIOR_EXPERIENCE_YEARS = 12;
